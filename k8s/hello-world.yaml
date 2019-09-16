@@ -13,6 +13,9 @@ spec:
         - name: hello-world
           imagePullPolicy: IfNotPresent
           image: $DOCKER_REPO_NAME:$VERSION
+          env:
+            - name: SERVER_CONTEXT_PATH
+              value: /hello-world
           ports:
             - containerPort: 8080
 ---
