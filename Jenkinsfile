@@ -48,7 +48,7 @@ pipeline {
     stage('Deploy Container') {
       agent {label 'kube-slave'}
       steps {
-        sh "kubectl get nodes"
+        kubernetesDeploy configs: 'k8s/hello-world.yaml', kubeconfigId: 'kubeconfig'
       }
     }
   }

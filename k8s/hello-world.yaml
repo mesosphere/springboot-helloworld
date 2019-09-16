@@ -12,7 +12,7 @@ spec:
       containers:
         - name: hello-world
           imagePullPolicy: IfNotPresent
-          image: IMAGE_NAME:IMAGE_TAG
+          image: $DOCKER_REPO_NAME:$VERSION
           ports:
             - containerPort: 8080
 ---
