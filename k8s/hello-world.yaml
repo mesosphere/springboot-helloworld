@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: hello-world
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           image: $DOCKER_REPO_NAME:$VERSION
           env:
             - name: SERVER_SERVLET_CONTEXT_PATH
