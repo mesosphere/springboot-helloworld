@@ -1,4 +1,4 @@
-package com.d2iq.helloworld;
+package com.d2iq.helloworld.greeting;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
