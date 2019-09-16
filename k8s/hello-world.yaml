@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-world
+spec:
+  replicas: 3
+  template:
+    metadata:
+      lables:
+        app: hello-world-app
+    spec:
+      containers:
+        - name: hello-world
+          imagePullPolicy: IfNotPresent
+          image: IMAGE_NAME:IMAGE_TAG
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-svc
+spec:
+  ports:
+    - name: http
+      port: 8080
+  selector:
+    app: hello-world-app
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-world-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.rule.type: PathPrefix
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /hello-world
+            backend:
+              serviceName: hello-world-svc
+              servicePort: 8080

@@ -47,5 +47,15 @@ pipeline {
         }
       }
     }
+
+    stage('Deploy Container') {
+      agent {label 'kube-slave'}
+      when {
+        branch 'master'
+      }
+      steps {
+        sh "kubectl get nodes"
+      }
+    }
   }
 }
