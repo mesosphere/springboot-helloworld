@@ -6,7 +6,7 @@ spec:
   replicas: 3
   template:
     metadata:
-      lables:
+      labels:
         app: hello-world-app
     spec:
       containers:
