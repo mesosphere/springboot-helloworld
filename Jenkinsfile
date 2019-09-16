@@ -35,9 +35,6 @@ pipeline {
 
     stage('Push Container') {
       agent {label 'kube-slave'}
-      when {
-        branch 'master'
-      }
       steps {
           container('dind') {
           withCredentials([usernamePassword(credentialsId: 'docker-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -50,9 +47,6 @@ pipeline {
 
     stage('Deploy Container') {
       agent {label 'kube-slave'}
-      when {
-        branch 'master'
-      }
       steps {
         sh "kubectl get nodes"
       }
