@@ -1,5 +1,4 @@
 #!/usr/bin/env groovy
-def VERSION = 'UNKNOWN'
 
 pipeline {
   agent any
